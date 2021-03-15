@@ -1,14 +1,9 @@
 package ru.netology.web.test;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import ru.netology.web.data.DataGenerator;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -35,7 +30,7 @@ public class ChangeDateTest {
         String minDeliveryDate = getDate(3);
         $("[data-test-id='date'] input").setValue(minDeliveryDate);
         $("[data-test-id='name'] input").setValue(faker.name().fullName());
-        $("[data-test-id='phone'] input").setValue(faker.phoneNumber().phoneNumber()); /
+        $("[data-test-id='phone'] input").setValue(faker.phoneNumber().phoneNumber());
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Запланировать")).click();
         $(withText("Встреча успешно запланирована")).shouldBe(visible);
